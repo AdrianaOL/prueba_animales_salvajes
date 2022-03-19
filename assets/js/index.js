@@ -1,11 +1,13 @@
-import { Animal } from './Animal.js'
+// Importacion de Clases hijas de Animal
 import { Serpiente } from './Serpiente.js'
 import { Lobo } from './Lobo.js'
-import { Oso } from './Oso.js'
 import { Aguila } from './Aguila.js'
 import { Leon } from './Leon.js'
+import { Oso } from './Oso.js'
 
+// Creando constante URL para alamacenar el archivo json
 const url = 'http://localhost:5500/animales.json'
+// Funcion asincrona IIFE
 ;(async () => {
   const request = async (url) => {
     const response = await fetch(url)
@@ -23,23 +25,21 @@ const url = 'http://localhost:5500/animales.json'
       const preview = getElementBySelector('#preview')
       const animales = getElementBySelector('#Animales')
 
-      const iteracionAnimales = (() => {
-        for (let i = 0; i < result.animales.length; i++) {
-          if (result.animales[i].name === animal) {
-            preview.innerHTML = `<img src='assets/imgs/${result.animales[i].imagen}' class='h-100 w-75' style='object-fit: cover;'>`
-            animales.innerHTML += `
+      for (let i = 0; i < result.animales.length; i++) {
+        if (result.animales[i].name === animal) {
+          preview.innerHTML = `<img src='assets/imgs/${result.animales[i].imagen}' class='h-100 w-75' style='object-fit: cover;'>`
+          animales.innerHTML += `
                            <div class='card w-25 h-50' style='width: 18rem;'>
                                    <img src='assets/imgs/${result.animales[i].imagen}' class='card-img-top h-75' style='object-fit: cover;'>
                                <div class='card-body bg-secondary h-25 p-0 d-flex align-content-center justify-content-center'>
                                    <img class='audio audio${result.animales[i].name}' type='button' src='assets/imgs/audio.svg' class='w-25'>
                                </div>
                            </div>`
-          }
         }
-      })()
+      }
 
       if (animal === 'Leon') {
-        let Leon = new Leon(
+        const leon = new Leon(
           animal,
           edad,
           result.animales[0].imagen,
@@ -47,7 +47,7 @@ const url = 'http://localhost:5500/animales.json'
           result.animales[0].sonido
         )
       } else if (animal === 'Lobo') {
-        let Lobo = new Lobo(
+        const lobo = new Lobo(
           animal,
           edad,
           result.animales[1].imagen,
@@ -58,7 +58,7 @@ const url = 'http://localhost:5500/animales.json'
           Lobo.aullar()
         })
       } else if (animal === 'Oso') {
-        let Oso = new Oso(
+        const oso = new Oso(
           animal,
           edad,
           result.animales[2].imagen,
@@ -66,7 +66,7 @@ const url = 'http://localhost:5500/animales.json'
           result.animales[2].sonido
         )
       } else if (animal === 'Serpiente') {
-        let Serpiente = new Serpiente(
+        const serpiente = new Serpiente(
           animal,
           edad,
           result.animales[3].imagen,
@@ -74,7 +74,7 @@ const url = 'http://localhost:5500/animales.json'
           result.animales[3].sonido
         )
       } else if (animal === 'Aguila') {
-        let Aguila = new Aguila(
+        const aguila = new Aguila(
           animal,
           edad,
           result.animales[4].imagen,
@@ -82,14 +82,10 @@ const url = 'http://localhost:5500/animales.json'
           result.animales[4].sonido
         )
       }
-
-      limpiarCampos()
+      document.querySelector('#animal').value = ''
+      document.querySelector('#edad').value = ''
+      document.querySelector('#comentarios').value = ''
     })
-    const limpiarCampos = () => {
-      document.getElementById('animal').value = ''
-      document.getElementById('edad').value = ''
-      document.getElementById('comentarios').value = ''
-    }
   }
   return request(url)
 })()
