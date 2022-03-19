@@ -5,7 +5,7 @@ import { Oso } from './Oso.js'
 import { Aguila } from './Aguila.js'
 import { Leon } from './Leon.js'
 
-const url = 'http://localhost:5501/animales.json'
+const url = 'http://localhost:5500/animales.json'
 ;(async () => {
   const request = async (url) => {
     const response = await fetch(url)
