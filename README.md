@@ -1,13 +1,6 @@
-# Prueba Animales Salvajes
-En esta
-prueba crearemos una aplicación web que permita agregar en una tabla los animales en
-investigación, utilizando el paradigma POO para la creación de las instancias que
-representen los diferentes animales con sus atributos y métodos.
+# Prueba InstaFake
+-para ejecutar este programa se debe ejecutar: 
+`npm install`
+`npm run watch`
 ## Capitulos aplicados
-- Clases con herencias.
-- Importacion y exportacion de modulos.
-- Funciones autoejecutables IIFE.
-- Funciones async / await.
-- Instancias de clases.
-- Obtener y modificar elementos del DOM.
-### Visita: [Prueba Animales Salvajes](https://adrianaol.github.io/prueba_animales_salvajes/)
+-El desafío está basado en el siguiente capítulo de la lectura: "JWT"
